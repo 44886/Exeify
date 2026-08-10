@@ -1,13 +1,28 @@
+<div align="center">
+
+<img src="assets/icon.png" width="112" alt="Exeify" />
+
 # Exeify
 
-**把网址或本地 HTML 项目，一键打包成可运行的 Windows `.exe`。**
+**把网址或本地网页项目，一键打包成可运行的 Windows exe**
+
+零工具链 · 秒级出包 · 产物仅约 1 MB · 支持 Vite / Vue / React 等框架
+
+<p>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="License" /></a>
+  <img src="https://img.shields.io/badge/platform-Windows%2010%2B-0078D6?logo=windows&logoColor=white" alt="Platform" />
+  <img src="https://img.shields.io/badge/built%20with-Rust-000000?logo=rust&logoColor=white" alt="Rust" />
+  <img src="https://img.shields.io/badge/size-~1%20MB-success" alt="Size" />
+  <a href="https://github.com/44886/Exeify/releases"><img src="https://img.shields.io/github/v/release/44886/Exeify?label=release&color=orange" alt="Release" /></a>
+  <a href="https://github.com/44886/Exeify/stargazers"><img src="https://img.shields.io/github/stars/44886/Exeify?style=flat&logo=github" alt="Stars" /></a>
+</p>
 
 给小白用的图形界面工具：选一个在线网址、或一个本地网页文件夹，点一下就得到一个双击即开的 `.exe`。
-生成的程序使用 Windows 自带的 WebView2 显示，**体积仅约 1 MB**，终端用户无需安装任何东西。
+生成的程序使用 Windows 自带的 WebView2 显示，终端用户无需安装任何东西。
 
-<p align="center">
-  <img src="docs/screenshot.png" width="380" alt="Exeify 界面" />
-</p>
+<img src="docs/screenshot.png" width="420" alt="Exeify 界面" />
+
+</div>
 
 ## 特点
 
