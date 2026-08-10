@@ -3,3 +3,6 @@ Cargo.lock
 *.exe
 /dist
 /.cargo
+# WebView2 运行时在 exe 旁生成的用户数据目录
+*.WebView2/
+EBWebView/
