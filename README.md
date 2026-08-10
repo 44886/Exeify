@@ -1,4 +1,4 @@
-# html2exe
+# Exeify
 
 **把网址或本地 HTML 项目，一键打包成可运行的 Windows `.exe`。**
 
@@ -6,7 +6,7 @@
 生成的程序使用 Windows 自带的 WebView2 显示，**体积不到 1 MB**，终端用户无需安装任何东西。
 
 <p align="center">
-  <img src="docs/screenshot.png" width="380" alt="html2exe 界面" />
+  <img src="docs/screenshot.png" width="380" alt="Exeify 界面" />
 </p>
 
 ## 特点
@@ -21,7 +21,7 @@
 
 ## 使用方法（图形界面）
 
-1. 下载并运行 `html2exe.exe`。
+1. 下载并运行 `exeify.exe`。
 2. 选择模式：
    - **本地网页目录** —— 选一个包含网页的文件夹；**入口文件会自动识别**（多个时可下拉切换）。
    - **在线网址** —— 填一个 `https://` 开头的网址。
@@ -34,22 +34,22 @@
 
 ## 相对 Pake 的差异
 
-| | Pake | **html2exe** |
+| | Pake | **Exeify** |
 |---|---|---|
 | 打包时要装的东西 | Node.js + Rust + Tauri 工具链 | **无，下载即用** |
 | 打包耗时 | 分钟级（真的在编译） | **秒级（不编译，直接生成）** |
 | 本地目录 | 支持，但要走完整编译 | **一等公民，秒出** |
 | 面向人群 | 开发者 / 命令行 | **小白 / 图形界面** |
 
-> Pake 很棒，主打把在线网址做成精致桌面 App；html2exe 主打 **零门槛、秒出包、本地与网址双支持**。
+> Pake 很棒，主打把在线网址做成精致桌面 App；Exeify 主打 **零门槛、秒出包、本地与网址双支持**。
 
 ## 命令行（可选，进阶）
 
 同一个 exe 也内置了隐藏 CLI，方便脚本化：
 
 ```bash
-html2exe pack-local <网页目录> <输出.exe> [入口=index.html] [图标.ico/.png]
-html2exe pack-url   <网址>     <输出.exe> [图标.ico/.png]
+exeify pack-local <网页目录> <输出.exe> [入口=index.html] [图标.ico/.png]
+exeify pack-url   <网址>     <输出.exe> [图标.ico/.png]
 ```
 
 ## 技术栈
@@ -64,7 +64,7 @@ html2exe pack-url   <网址>     <输出.exe> [图标.ico/.png]
 
 ```bash
 cargo build --release
-# 产物：target/release/html2exe.exe
+# 产物：target/release/exeify.exe
 ```
 
 ## 运行环境
