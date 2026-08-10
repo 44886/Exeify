@@ -78,6 +78,15 @@ cargo build --release
 - Windows 10 / 11
 - [WebView2 运行时](https://developer.microsoft.com/microsoft-edge/webview2/)（Win11 及较新 Win10 已内置）
 
-## 许可证
+## 许可证与二开须知
 
-[Apache-2.0](LICENSE)
+本项目基于 **[Apache License 2.0](LICENSE)** 开源，Copyright 2026 **不坑老师**。
+
+欢迎二次开发（改造、集成、商用均可），但按 Apache-2.0 的要求，**再分发 / 二开时必须**：
+
+1. 保留 [`LICENSE`](LICENSE) 与 [`NOTICE`](NOTICE) 文件（`NOTICE` 里包含对「不坑老师」的署名，必须原样带上）；
+2. 保留源码文件顶部的版权声明；
+3. 若你修改了代码，需注明改动。
+
+> 说明：Apache-2.0 要求的是在**源码 / 分发物 / NOTICE** 中保留署名，并不强制在你的成品界面里展示；
+> 也允许闭源与商用，只要满足上述署名义务。若你愿意在 App 里保留"关于"页对「不坑老师」的展示，我们非常欢迎 🙏。
