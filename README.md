@@ -69,8 +69,8 @@ cargo build --release
 
 ## 运行环境
 
-- Windows 10 / 11
-- [WebView2 运行时](https://developer.microsoft.com/microsoft-edge/webview2/)（Win11 及较新 Win10 已内置）
+- **最低要求：Windows 10**（Windows 10 / 11 均支持；不支持 Win7/8）
+- [WebView2 运行时](https://developer.microsoft.com/microsoft-edge/webview2/)（Win11 及较新 Win10 已内置，缺失时安装一次即可）
 
 ## 许可证与二开须知
 
@@ -84,3 +84,9 @@ cargo build --release
 
 > 说明：Apache-2.0 要求的是在**源码 / 分发物 / NOTICE** 中保留署名，并不强制在你的成品界面里展示；
 > 也允许闭源与商用，只要满足上述署名义务。若你愿意在 App 里保留"关于"页对「不坑老师」的展示，我们非常欢迎 🙏。
+
+## Star History
+
+如果 Exeify 对你有帮助，欢迎点个 ⭐ Star 支持一下！
+
+[![Star History Chart](https://api.star-history.com/svg?repos=44886/exeify&type=Date)](https://star-history.com/#44886/exeify&Date)
