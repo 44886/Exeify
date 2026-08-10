@@ -1,1 +1,83 @@
 # html2exe
+
+**把网址或本地 HTML 项目，一键打包成可运行的 Windows `.exe`。**
+
+给小白用的图形界面工具：选一个在线网址、或一个本地网页文件夹，点一下就得到一个双击即开的 `.exe`。
+生成的程序使用 Windows 自带的 WebView2 显示，**体积不到 1 MB**，终端用户无需安装任何东西。
+
+<p align="center">
+  <img src="docs/screenshot.png" width="380" alt="html2exe 界面" />
+</p>
+
+## 特点
+
+- **极致轻量**：打包器和产物都不到 1 MB（对比 Electron ~100 MB、Pake ~10 MB）。
+- **秒级出包**：不编译、不联网。选好点一下，一秒钟生成 exe。
+- **零工具链**：使用者不用装 Rust / Node；产物在别人电脑上也只依赖系统自带的 WebView2（Win10/11 通常已内置）。
+- **双模式**：**在线网址** 和 **本地网页目录** 都支持，本地项目完全离线自包含。
+- **图形界面**：现代极简白，专为不懂命令行的人设计。
+
+## 使用方法（图形界面）
+
+1. 下载并运行 `html2exe.exe`。
+2. 选择模式：
+   - **本地网页目录** —— 选一个包含 `index.html` 的文件夹（可自定义入口文件名）。
+   - **在线网址** —— 填一个 `https://` 开头的网址。
+3. 填窗口标题、宽高，勾选是否允许调整窗口大小。
+4. 选择输出位置（`xxx.exe`），点 **开始打包**。
+5. 双击生成的 exe 即可运行。
+
+## 相对 Pake 的差异
+
+| | Pake | **html2exe** |
+|---|---|---|
+| 打包时要装的东西 | Node.js + Rust + Tauri 工具链 | **无，下载即用** |
+| 打包耗时 | 分钟级（真的在编译） | **秒级（追加载荷，不编译）** |
+| 本地目录 | 支持，但要走完整编译 | **一等公民，秒出** |
+| 面向人群 | 开发者 / 命令行 | **小白 / 图形界面** |
+
+> Pake 很棒，主打把在线网址做成精致桌面 App；html2exe 主打 **零门槛、秒出包、本地与网址双支持**。
+
+## 命令行（可选，进阶）
+
+同一个 exe 也内置了隐藏 CLI，方便脚本化：
+
+```bash
+html2exe pack-local <网页目录> <输出.exe> [入口文件=index.html]
+html2exe pack-url   <网址>     <输出.exe>
+```
+
+## 工作原理
+
+`html2exe.exe` 是**单一双模式**程序：启动时检查自身文件尾部有没有“载荷魔数”。
+
+- **没有** → 进入 GUI 打包器模式。
+- **有** → 进入 runner 模式，用 WebView 打开被打进去的网页 / 网址。
+
+打包时，程序把自己复制一份，在副本尾部追加 `资源zip + 配置json + 魔数`，就得到了产物 exe。
+本地资源通过自定义协议 `app://` 从内存直接喂给 WebView，**不起本地服务器**，无端口冲突、无防火墙弹窗。
+
+详细设计见 [docs/design.md](docs/design.md)。
+
+## 技术栈
+
+- [wry](https://github.com/tauri-apps/wry) + [tao](https://github.com/tauri-apps/tao) —— 系统 WebView2
+- Rust，`zip` / `rfd` / `serde`
+
+## 从源码构建
+
+需要 Rust（`x86_64-pc-windows-msvc`）：
+
+```bash
+cargo build --release
+# 产物：target/release/html2exe.exe
+```
+
+## 运行环境
+
+- Windows 10 / 11
+- [WebView2 运行时](https://developer.microsoft.com/microsoft-edge/webview2/)（Win11 及较新 Win10 已内置）
+
+## 许可证
+
+[Apache-2.0](LICENSE)
