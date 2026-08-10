@@ -89,4 +89,4 @@ cargo build --release
 
 如果 Exeify 对你有帮助，欢迎点个 ⭐ Star 支持一下！
 
-[![Star History Chart](https://api.star-history.com/svg?repos=44886/exeify&type=Date)](https://star-history.com/#44886/exeify&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=44886/Exeify&type=Date)](https://star-history.com/#44886/Exeify&Date)
