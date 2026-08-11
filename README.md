@@ -104,4 +104,10 @@ cargo build --release
 
 如果 Exeify 对你有帮助，欢迎点个 ⭐ Star 支持一下！
 
-[![Star History Chart](https://api.star-history.com/svg?repos=44886/Exeify&type=Date)](https://star-history.com/#44886/Exeify&Date)
+<a href="https://www.star-history.com/?type=date&repos=44886%2FExeify">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=44886/Exeify&type=date&theme=dark&legend=top-left&sealed_token=YMNWUhDFzTVgQEmYcdbs088CQw1c-GF4lqswUDdWzE0YMGY2ZiQ84jvUOSe9qAYt_tnLyDmycmwfWh5xLJ5X8b8WVKArYOBJcqrvxTGq2SPJCJALNagwfwVt5vqPFVs8iSsfKhXyg1q13JT7GB2ZDxtXZA9SDzx5S2Bll4jfxx1tJik9rp4gPwrqgfu7" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=44886/Exeify&type=date&legend=top-left&sealed_token=YMNWUhDFzTVgQEmYcdbs088CQw1c-GF4lqswUDdWzE0YMGY2ZiQ84jvUOSe9qAYt_tnLyDmycmwfWh5xLJ5X8b8WVKArYOBJcqrvxTGq2SPJCJALNagwfwVt5vqPFVs8iSsfKhXyg1q13JT7GB2ZDxtXZA9SDzx5S2Bll4jfxx1tJik9rp4gPwrqgfu7" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=44886/Exeify&type=date&legend=top-left&sealed_token=YMNWUhDFzTVgQEmYcdbs088CQw1c-GF4lqswUDdWzE0YMGY2ZiQ84jvUOSe9qAYt_tnLyDmycmwfWh5xLJ5X8b8WVKArYOBJcqrvxTGq2SPJCJALNagwfwVt5vqPFVs8iSsfKhXyg1q13JT7GB2ZDxtXZA9SDzx5S2Bll4jfxx1tJik9rp4gPwrqgfu7" />
+ </picture>
+</a>
