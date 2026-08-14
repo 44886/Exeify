@@ -6,13 +6,13 @@
 
 **把网址或本地网页项目，一键打包成可运行的 Windows exe**
 
-零工具链 · 秒级出包 · 产物仅约 1 MB · 支持 Vite / Vue / React 等框架
+零工具链 · 秒级出包 · 产物仅约 2 MB · 支持 Vite / Vue / React 等框架
 
 <p>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="License" /></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%2B-0078D6?logo=windows&logoColor=white" alt="Platform" />
   <img src="https://img.shields.io/badge/built%20with-Rust-000000?logo=rust&logoColor=white" alt="Rust" />
-  <img src="https://img.shields.io/badge/size-~1%20MB-success" alt="Size" />
+  <img src="https://img.shields.io/badge/size-~2%20MB-success" alt="Size" />
   <a href="https://github.com/44886/Exeify/releases"><img src="https://img.shields.io/github/v/release/44886/Exeify?label=release&color=orange" alt="Release" /></a>
   <a href="https://github.com/44886/Exeify/stargazers"><img src="https://img.shields.io/github/stars/44886/Exeify?style=flat&logo=github" alt="Stars" /></a>
 </p>
@@ -26,7 +26,7 @@
 
 ## 特点
 
-- **极致轻量**：打包器和产物都只有约 1 MB（对比 Electron ~100 MB、Pake ~10 MB）。
+- **极致轻量**：打包器和产物都只有约 2 MB（对比 Electron ~100 MB、Pake ~10 MB）。
 - **秒级出包**：不编译、不联网。选好点一下，一秒钟生成 exe。
 - **零工具链**：使用者不用装 Rust / Node；产物在别人电脑上也只依赖系统自带的 WebView2（Win10/11 通常已内置）。
 - **双模式**：**在线网址** 和 **本地网页目录** 都支持，本地项目完全离线自包含。
