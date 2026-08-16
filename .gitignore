@@ -6,3 +6,12 @@ Cargo.lock
 # WebView2 运行时在 exe 旁生成的用户数据目录
 *.WebView2/
 EBWebView/
+
+# 自 2026-08-16 起不再公开源码：以下仅保留在本地，不进公开仓库
+/src/
+/ui/
+/examples/
+/skill/
+/build.rs
+/Cargo.toml
+/docs/*.md
