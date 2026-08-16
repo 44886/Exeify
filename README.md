@@ -31,6 +31,8 @@
 >
 > **从 2026 年 8 月 16 日起，本仓库不再共享源码，只提供 Release 包。**
 > 如果你是**使用者**，可以继续正常使用；如果你是**开发者**，请自行开发。
+>
+> 📄 相关阅读：**[开源被抄袭，我想说几句 →](https://mp.weixin.qq.com/s/_wpM2gxsth9q3lFRVF7dRQ)**
 
 <p align="center">
   <img src="https://cdn2.44886.com/static/2aa0e9014b059e5d364d5463537097b6.png" width="680" alt="源码被抄袭且未署名的证据" />
