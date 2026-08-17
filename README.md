@@ -4,21 +4,21 @@
 
 # Exeify
 
-**把网址或本地网页项目，一键打包成可运行的 Windows exe**
+**把网址或本地网页，一键打包成 Windows exe 和 安卓 APK**
 
-零工具链 · 秒级出包 · 产物仅约 2 MB · 支持 Vite / Vue / React 等框架
+零工具链 · 秒级出包 · 产物约 2 MB · exe 与 APK 双端输出 · 支持 Vite / Vue / React 等框架
 
 <p>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="License" /></a>
-  <img src="https://img.shields.io/badge/platform-Windows%2010%2B-0078D6?logo=windows&logoColor=white" alt="Platform" />
+  <img src="https://img.shields.io/badge/packer-Windows%2010%2B-0078D6?logo=windows&logoColor=white" alt="Packer" />
+  <img src="https://img.shields.io/badge/output-exe%20%2B%20apk-success" alt="Output" />
   <img src="https://img.shields.io/badge/built%20with-Rust-000000?logo=rust&logoColor=white" alt="Rust" />
-  <img src="https://img.shields.io/badge/size-~2%20MB-success" alt="Size" />
   <a href="https://github.com/44886/Exeify/releases"><img src="https://img.shields.io/github/v/release/44886/Exeify?label=release&color=orange" alt="Release" /></a>
   <a href="https://github.com/44886/Exeify/stargazers"><img src="https://img.shields.io/github/stars/44886/Exeify?style=flat&logo=github" alt="Stars" /></a>
 </p>
 
-给小白用的图形界面工具：选一个在线网址、或一个本地网页文件夹，点一下就得到一个双击即开的 `.exe`。
-生成的程序使用 Windows 自带的 WebView2 显示，终端用户无需安装任何东西。
+给小白用的图形界面工具：选一个在线网址、或一个本地网页文件夹，点一下就得到一个双击即开的 Windows `.exe`，
+还能**同时输出一个安卓 `.apk`**。exe 用 Windows 自带的 WebView2 显示，APK 用安卓系统自带的 WebView 显示，终端用户都无需额外安装。
 
 <img src="docs/screenshot.png" width="420" alt="Exeify 界面" />
 
@@ -40,13 +40,15 @@
 
 ## 特点
 
-- **极致轻量**：打包器和产物都只有约 2 MB（对比 Electron ~100 MB、Pake ~10 MB）。
-- **秒级出包**：不编译、不联网。选好点一下，一秒钟生成 exe。
-- **零工具链**：使用者不用装 Rust / Node；产物在别人电脑上也只依赖系统自带的 WebView2（Win10/11 通常已内置）。
-- **双模式**：**在线网址** 和 **本地网页目录** 都支持，本地项目完全离线自包含。
-- **自动识别入口**：选好本地目录，自动扫描出网页入口（优先 `index.html`），多个可下拉切换，不用手打路径。
-- **自定义图标**：可给产物 exe 换成自己的 `.png` / `.ico`（自动转换、生成多分辨率），支持索引色等各类 PNG。
-- **图形界面**：现代极简白，专为不懂命令行的人设计。
+- **双端输出**：一次打包，可同时得到 **Windows exe** 和 **安卓 APK**（同一个网页，两个平台的 App）。
+- **极致轻量**：打包器与产物都只有约 2 MB（对比 Electron ~100 MB、Pake ~10 MB）。
+- **秒级出包**：不编译、不联网，选好点一下，一秒生成。
+- **零工具链**：打 exe 不用装 Rust / Node；**打 APK 也不用装 Android SDK / Android Studio**。
+- **双模式**：**在线网址** 与 **本地网页目录** 都支持，本地项目完全离线自包含。
+- **自动识别入口**：选好本地目录自动扫描网页入口（优先 `index.html`），多个可下拉切换。
+- **自定义图标 / 启动页 / 全屏**：exe 与 APK 通用；APK 还会自动套用应用名、图标、启动页、全屏，包名自动生成。
+- **源码保护**（exe）：加密内嵌网页资源 + 禁用查看源码，防止产物被直接解压出源码。
+- **图形界面**：现代极简，专为不懂命令行的人设计。
 
 ## 使用方法（图形界面）
 
@@ -54,12 +56,25 @@
 2. 选择模式：
    - **本地网页目录** —— 选一个包含网页的文件夹；**入口文件会自动识别**（多个时可下拉切换）。
    - **在线网址** —— 填一个 `https://` 开头的网址。
-3. 填窗口标题、宽高，勾选是否允许调整窗口大小。
-4. *(可选)* 选一个 `.png` / `.ico` 作为产物的**程序图标**（不选则用默认图标）。
-5. 选择输出位置（`xxx.exe`），点 **开始打包**。
-6. 双击生成的 exe 即可运行。
+3. 设置窗口标题、宽高、是否全屏；可选**图标 / 启动页 / 源码保护**。
+4. 在**输出区**选好 exe 保存位置；**想同时做成安卓 App，就勾选「同时输出安卓 APK」**。
+5. 点 **开始打包** —— 得到 `xxx.exe`（勾选后还有一个 `xxx.apk`）。
+6. exe 双击即运行；apk 传到安卓手机、开"未知来源"安装即可。
 
 > 点击右上角「关于」可查看作者信息与公众号。
+
+## 关于输出的安卓 APK
+
+- **免 Android SDK 本地生成**，秒级出包；产物约 2 MB + 你的网页内容。
+- 依赖安卓系统自带的 **Android System WebView**（**Android 7+ / minSdk 24**，覆盖绝大多数机型）。
+- 自动套用打包设置：**应用名**（窗口标题）、**图标**、**启动页**、**全屏**；**包名自动生成**（无需手填）。
+- 用内置密钥签名，适合**侧载 / 内部分发**；上架应用商店需自带签名密钥（后续版本支持）。
+
+## AI 一键打包（Skill）
+
+已封装成 [Agent Skills](https://agentskills.io) 标准的技能，让 AI 助手按你的一句话把网页打成 exe / apk：
+
+👉 **[exeify-web2exe-skill](https://github.com/44886/exeify-web2exe-skill)** （Claude Code 里 `/plugin marketplace add 44886/exeify-web2exe-skill` 一键装）
 
 ## 相对 Pake 的差异
 
@@ -67,52 +82,36 @@
 |---|---|---|
 | 打包时要装的东西 | Node.js + Rust + Tauri 工具链 | **无，下载即用** |
 | 打包耗时 | 分钟级（真的在编译） | **秒级（不编译，直接生成）** |
-| 本地目录 | 支持，但要走完整编译 | **一等公民，秒出** |
+| 输出目标 | 桌面 App | **Windows exe + 安卓 APK** |
 | 面向人群 | 开发者 / 命令行 | **小白 / 图形界面** |
 
-> Pake 很棒，主打把在线网址做成精致桌面 App；Exeify 主打 **零门槛、秒出包、本地与网址双支持**。
+> Pake 很棒，主打把在线网址做成精致桌面 App；Exeify 主打 **零门槛、秒出包、exe 与 APK 双端、本地与网址双支持**。
 
-## 命令行（可选，进阶）
-
-同一个 exe 也内置了隐藏 CLI，方便脚本化：
+## 命令行（可选，进阶 / 供 AI 与脚本调用）
 
 ```bash
-exeify pack-local <网页目录> <输出.exe> [入口=index.html] [图标.ico/.png]
-exeify pack-url   <网址>     <输出.exe> [图标.ico/.png]
+exeify pack --local <网页目录> --out app.exe [--apk app.apk] [选项...]
+exeify pack --url <网址>       --out app.exe [--apk app.apk] [选项...]
 ```
 
-## 技术栈
-
-- [wry](https://github.com/tauri-apps/wry) + [tao](https://github.com/tauri-apps/tao) —— 系统 WebView2
-- Rust，`zip`（资源打包）/ `rfd`（原生对话框）/ `serde`
-- `editpe` + `ico` + `png`（产物图标写入 / PNG→ICO）/ `winresource`（打包器自身图标）
-
-## 从源码构建
-
-需要 Rust（`x86_64-pc-windows-msvc`）：
-
-```bash
-cargo build --release
-# 产物：target/release/exeify.exe
-```
+`--out`（Windows exe）与 `--apk`（安卓 APK）**至少给一个，可同时给**。常用选项：
+`--title 应用名` · `--icon 图标.ico/.png` · `--splash 启动图.png` · `--window fullscreen` · `--no-protect`。
+用 `exeify pack --help` 查看全部参数。
 
 ## 运行环境
 
-- **最低要求：Windows 10**（Windows 10 / 11 均支持；不支持 Win7/8）
-- [WebView2 运行时](https://developer.microsoft.com/microsoft-edge/webview2/)（Win11 及较新 Win10 已内置，缺失时安装一次即可）
+- **打包器**：**Windows 10+**（需 [WebView2 运行时](https://developer.microsoft.com/microsoft-edge/webview2/)，Win11 及较新 Win10 已内置）。
+- **exe 产物**：Windows 10+，依赖 WebView2。
+- **APK 产物**：**Android 7+**，依赖系统自带的 Android System WebView。
 
-## 许可证与二开须知
+## 获取
 
-本项目基于 **[Apache License 2.0](LICENSE)** 开源，Copyright 2026 **不坑老师**。
+本仓库**只提供 Release 二进制包**（不再共享源码，见上方说明）。到 **[Releases](https://github.com/44886/Exeify/releases)** 下载最新的 `exeify.exe` 即可。
 
-欢迎二次开发（改造、集成、商用均可），但按 Apache-2.0 的要求，**再分发 / 二开时必须**：
+## 许可证与署名
 
-1. 保留 [`LICENSE`](LICENSE) 与 [`NOTICE`](NOTICE) 文件（`NOTICE` 里包含对「不坑老师」的署名，必须原样带上）；
-2. 保留源码文件顶部的版权声明；
-3. 若你修改了代码，需注明改动。
-
-> 说明：Apache-2.0 要求的是在**源码 / 分发物 / NOTICE** 中保留署名，并不强制在你的成品界面里展示；
-> 也允许闭源与商用，只要满足上述署名义务。若你愿意在 App 里保留"关于"页对「不坑老师」的展示，我们非常欢迎 🙏。
+基于 **[Apache License 2.0](LICENSE)** 发布，Copyright 2026 **不坑老师**。
+再分发（含二进制）时请保留 [`LICENSE`](LICENSE) 与 [`NOTICE`](NOTICE) 文件（`NOTICE` 含对「不坑老师」的署名，须原样带上）。
 
 ## Star History
 

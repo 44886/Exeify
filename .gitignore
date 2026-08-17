@@ -15,3 +15,6 @@ EBWebView/
 /build.rs
 /Cargo.toml
 /docs/*.md
+
+# 根目录成品 exe 需入库（很多用户只在代码区找文件，不看 Release）
+!/exeify.exe
