@@ -113,6 +113,7 @@ exeify pack --url <网址>       --out app.exe [--apk app.apk] [选项...]
 ## 许可证与署名
 
 基于 **[Apache License 2.0](LICENSE)** 发布，Copyright 2026 **不坑老师**。
+官网：<https://www.bukenghezi.com>。
 再分发（含二进制）时请保留 [`LICENSE`](LICENSE) 与 [`NOTICE`](NOTICE) 文件（`NOTICE` 含对「不坑老师」的署名，须原样带上）。
 
 ## Star History
