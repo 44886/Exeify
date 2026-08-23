@@ -36,6 +36,7 @@ compatibility: "Windows only. The bundled exeify.exe is a Windows executable; pa
 - **源**（二选一）：要打包的**本地网页目录**（含 index.html 的文件夹）**或**一个**在线网址**（http/https）。
 - **输出路径**：产物 `.exe` 存哪、叫什么（默认可放在源目录旁，如 `app.exe`）。
 - 可选：窗口标题、窗口尺寸、是否**全屏/最大化**、程序**图标**、**启动图**、是否关闭**源码保护**（默认开）。
+- **不用主动追问名字**：不给 `--title` 时会自动读入口页的 `<title>` 当窗口标题 / 安卓应用名；用户明确说了名字再传 `--title`。
 
 ## 调用方式
 命名参数 CLI（推荐，能力全）。可输出 **Windows exe** 和/或 **安卓 APK**：
@@ -50,8 +51,8 @@ exeify.exe pack --url <网址>   --out <app.exe> [--apk <app.apk>] [选项...]
 | `--local <目录>` / `--url <网址>` | 源，二选一必填 | — |
 | `--out <路径.exe>` | 输出 Windows exe（.exe 结尾） | 见下 |
 | `--apk <路径.apk>` | 输出安卓 APK（.apk 结尾）；应用名=--title、图标=--icon、启动图=--splash、全屏=--window fullscreen 自动复用，包名自动生成 | 见下 |
-| `--entry <文件>` | 本地入口文件（仅 --local） | index.html |
-| `--title <文字>` | 窗口标题 | App |
+| `--entry <文件>` | 本地入口文件（仅 --local）；exe 与 APK 都按它当首页 | index.html |
+| `--title <文字>` | 窗口标题 / 安卓应用名 | **自动取入口页的 `<title>`**，取不到才用 App |
 | `--width <数字>` / `--height <数字>` | 窗口宽 / 高 | 1024 / 720 |
 | `--window <模式>` | 启动状态 normal\|maximized\|fullscreen | normal |
 | `--no-resizable` | 禁止缩放窗口 | 允许 |
@@ -63,6 +64,8 @@ exeify.exe pack --url <网址>   --out <app.exe> [--apk <app.apk>] [选项...]
 
 - `--out` 与 `--apk` **至少给一个**，可**同时给**（一次同时产出 exe + apk）。
 - 安卓 APK **免 Android SDK 本地生成**；产物依赖系统自带的 Android System WebView（**Android 7+**）；安装需在手机开"未知来源"。用内置密钥签名，适合侧载/内部分发。
+- 安卓壳的取页规则与 exe 内置服务器一致：精确路径 → 目录下 `index.html` → **无扩展名的前端路由回退到入口页**，都落空才显示站内 404 页（**v0.7.1 起**；更早版本打的 APK 遇到这类路径会报 `net::ERR_NAME_NOT_RESOLVED`，需用新版重新打包）。
+- 安卓壳没有原生标题栏，并自动避让状态栏/导航栏（**v0.7.2 起**）；`--window fullscreen` 则铺满全屏。
 
 用 `exeify.exe pack --help` 可随时打印完整用法。
 
@@ -70,11 +73,16 @@ exeify.exe pack --url <网址>   --out <app.exe> [--apk <app.apk>] [选项...]
 1. 拼好命令后用 Bash/PowerShell 运行（路径含空格要加引号）。
 2. **成功**：标准输出打印一行 `OK: <输出路径>`，返回码 0。→ 告诉用户产物路径、可双击运行；提醒需 Windows 10+（自带 WebView2）。
 3. **失败**：stderr 打印 `失败: <原因>`，返回码 1（打包错误）或 2（用法/参数错误）。→ 把原因转述给用户并修正参数重试。
-4. 运行后**确认输出 .exe 文件确实生成**（检查文件存在与大小），再向用户报告成功。
+4. 运行后**确认输出 .exe / .apk 文件确实生成**（检查文件存在与大小），再向用户报告成功。
+5. 没给 `--title` 时产物名字来自网页 `<title>`：报告时顺带说一句取到的名字，用户不满意可加 `--title` 重打。
 
 ## 例子
-- 本地目录、全屏、带图标：
+- 本地目录、名字自动取网页 `<title>`、一次同时出 exe + 安卓 APK：
+  `exeify.exe pack --local "D:\site" --out "D:\site\app.exe" --apk "D:\site\app.apk"`
+- 本地目录、全屏、带图标、指定名字：
   `exeify.exe pack --local "D:\site" --out "D:\site\app.exe" --title "我的应用" --window fullscreen --icon "D:\logo.ico"`
+- 入口页不叫 index.html（例如 `dist/index.html`）：
+  `exeify.exe pack --local "D:\site" --entry "dist/index.html" --out "D:\app.exe" --apk "D:\app.apk"`
 - 在线网址、固定尺寸、关源码保护（便于调试）：
   `exeify.exe pack --url https://example.com --out "D:\demo.exe" --width 1280 --height 800 --no-protect`
 
