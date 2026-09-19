@@ -66,6 +66,7 @@ exeify.exe pack --url <网址>   --out <app.exe> [--apk <app.apk>] [选项...]
 - 安卓 APK **免 Android SDK 本地生成**；产物依赖系统自带的 Android System WebView（**Android 7+**）；安装需在手机开"未知来源"。用内置密钥签名，适合侧载/内部分发。
 - 安卓壳的取页规则与 exe 内置服务器一致：精确路径 → 目录下 `index.html` → **无扩展名的前端路由回退到入口页**，都落空才显示站内 404 页（**v0.7.1 起**；更早版本打的 APK 遇到这类路径会报 `net::ERR_NAME_NOT_RESOLVED`，需用新版重新打包）。
 - 安卓壳没有原生标题栏，并自动避让状态栏/导航栏（**v0.7.2 起**）；`--window fullscreen` 则铺满全屏。
+- 安卓壳支持网页 `<input type="file">` 上传图片/视频、拍照/录像及 `getUserMedia()` 摄像头调用；首次使用按系统提示授予相机/麦克风权限。
 
 用 `exeify.exe pack --help` 可随时打印完整用法。
 
