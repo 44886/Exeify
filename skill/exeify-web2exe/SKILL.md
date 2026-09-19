@@ -88,6 +88,7 @@ exeify.exe pack --url <网址>   --out <app.exe> [--apk <app.apk>] [选项...]
 
 ## 说明与边界
 - 产物依赖 Windows 自带的 WebView2（Win10/11 通常已内置）。
+- 产物会把 WebView2 用户数据保存到 `%LOCALAPPDATA%\exeify\<exe文件名>`，正常关闭后 cookies、localStorage、IndexedDB 等可跨次启动保留；网站设置为 session cookie 或主动清理登录态时，仍按网站自身规则执行。
 - 源码保护是「提高门槛」而非绝对加密（详见 Exeify 项目说明）。
 - 本地目录会被完整打包进 exe（离线自包含）；网址模式需联网。
 - 项目主页：https://github.com/44886/Exeify
